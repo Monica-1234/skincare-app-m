@@ -1,0 +1,111 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Skin Type Quiz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <h2 class="text-center mb-4">Find Your Skin Type</h2>
+    <div id="quizContainer"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is your gender?",
+        options: [
+          { text: "Male", value: "male" },
+          { text: "Female", value: "female" },
+          { text: "Other", value: "other" }
+        ],
+        key: "gender"
+      },
+      {
+        question: "What is your age group?",
+        options: [
+          { text: "Under 18", value: "under18" },
+          { text: "18-25", value: "18-25" },
+          { text: "26-35", value: "26-35" },
+          { text: "36+", value: "36plus" }
+        ],
+        key: "age"
+      },
+      {
+        question: "How does your skin feel after washing?",
+        options: [
+          { text: "Tight and dry", value: "dry" },
+          { text: "Shiny and oily", value: "oily" },
+          { text: "Normal", value: "normal" },
+          { text: "Red or itchy", value: "sensitive" }
+        ]
+      },
+      {
+        question: "How often do you notice oil on your face?",
+        options: [
+          { text: "Very often", value: "oily" },
+          { text: "Rarely", value: "dry" },
+          { text: "Sometimes", value: "normal" },
+          { text: "With irritation", value: "sensitive" }
+        ]
+      },
+      {
+        question: "How does your skin react to new products?",
+        options: [
+          { text: "It gets red or itchy", value: "sensitive" },
+          { text: "It breaks out", value: "oily" },
+          { text: "It’s fine", value: "normal" },
+          { text: "It feels dry", value: "dry" }
+        ]
+      }
+    ];
+
+    let currentQuestion = 0;
+    let scores = { oily: 0, dry: 0, normal: 0, sensitive: 0 };
+    let userDetails = { gender: '', age: '' };
+
+    function showQuestion(index) {
+      const container = document.getElementById("quizContainer");
+      container.innerHTML = "";
+
+      if (index >= quizData.length) {
+        const skinType = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+        localStorage.setItem("skinType", skinType);
+        localStorage.setItem("userGender", userDetails.gender);
+        localStorage.setItem("userAge", userDetails.age);
+        window.location.href = "result.html";
+        return;
+      }
+
+      const q = quizData[index];
+
+      const questionEl = document.createElement("h4");
+      questionEl.textContent = q.question;
+      container.appendChild(questionEl);
+
+      q.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "btn btn-outline-primary m-2 w-100";
+        btn.textContent = opt.text;
+        btn.onclick = () => {
+          if (q.key) {
+            userDetails[q.key] = opt.value;
+          } else {
+            scores[opt.value]++;
+          }
+          showQuestion(index + 1);
+        };
+        container.appendChild(btn);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      showQuestion(0);
+    });
+  </script>
+</body>
+</html>
