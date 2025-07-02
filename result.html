@@ -24,54 +24,55 @@
 
   const productData = {
     oily: [
-      {
-        type: "Cleanser",
-        name: "CeraVe Foaming Cleanser",
-        image: "https://m.media-amazon.com/images/I/61+bVRp3lGL._AC_SL1500_.jpg"
-      },
-      {
-        type: "Moisturizer",
-        name: "Neutrogena Hydro Boost Gel",
-        image: "https://m.media-amazon.com/images/I/71vPpK-FUCL._AC_SL1500_.jpg"
-      },
-      {
-        type: "Sunscreen",
-        name: "La Roche-Posay SPF 60",
-        image: "https://m.media-amazon.com/images/I/61MlCBpZbAL._AC_SL1500_.jpg"
-      }
-    ],
+    {
+      type: "Cleanser/Facewash",
+      name: "Acne Star Facewash",
+      image: "images/acne star.jpeg"
+    },
+    {
+      type: "Moisturizer",
+      name: "Re'equil Oil free Moisturiser",
+      image: "images/re equil.jpeg"
+    },
+    {
+      type: "Sunscreen",
+      name: "Fix Derma Shadow SPF 50 + Gel",
+      image: "images/fix.jpeg"
+    }
+  ],
+
     dry: [
       {
         type: "Cleanser",
         name: "Cetaphil Gentle Cleanser",
-        image: "https://m.media-amazon.com/images/I/71OTZgkd24L._AC_SL1500_.jpg"
+        image: "images/cetaphil.jpeg"
       },
       {
         type: "Moisturizer",
         name: "CeraVe Moisturizing Cream",
-        image: "https://m.media-amazon.com/images/I/61CFYkgI2QL._AC_SL1500_.jpg"
+        image: "images/cerave.jpeg"
       },
       {
         type: "Sunscreen",
-        name: "EltaMD UV Daily SPF 40",
-        image: "https://m.media-amazon.com/images/I/51OJ3DhZ7oL._AC_SL1500_.jpg"
+        name: "Episoft AC ",
+        image: "images/episoft.jpeg"
       }
     ],
     normal: [
       {
         type: "Cleanser",
-        name: "Vanicream Gentle Cleanser",
-        image: "https://m.media-amazon.com/images/I/51ubKjvz1KL._AC_SL1000_.jpg"
+        name: "simple Face wash",
+        image: "images/simple.jpeg"
       },
       {
         type: "Moisturizer",
-        name: "Olay Whip Moisturizer",
-        image: "https://m.media-amazon.com/images/I/71C4S01sQ-L._AC_SL1500_.jpg"
+        name: "Dot and Key Ceramides and Hyaluronic barrier repair moisturizer",
+        image: "images/dotnkey.jpeg"
       },
       {
         type: "Sunscreen",
-        name: "Supergoop! Unseen Sunscreen SPF 40",
-        image: "https://m.media-amazon.com/images/I/61IQVOu6ZfL._AC_SL1500_.jpg"
+        name: "Wish Care vitamin c pure glow milk Sunscreen",
+        image: "images/wishcare.jpeg"
       }
     ],
     sensitive: [
@@ -92,6 +93,7 @@
       }
     ]
   };
+
 
   const products = productData[skinType];
   const container = document.getElementById("products");
